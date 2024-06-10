@@ -38,7 +38,7 @@ server.patch("/updateuser/:id", async (req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatedUser = await UserModel.findByIdAndUpdate({ _id: id }, data);
-    res.status(200).send(updatedUser);
+    res.status(200).send("filed updated");
   } catch (error) {
     console.log("Data not found", error);
   }
@@ -48,7 +48,7 @@ server.delete("/deleteuser/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedUser = await UserModel.findByIdAndDelete({ _id: id });
-    res.status(200).send(deletedUser);
+    res.status(200).send("user deleted");
   } catch (error) {
     console.log("Data not found", error);
   }
@@ -83,7 +83,7 @@ server.patch("/updateproduct/:id", async (req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatedProduct = await ProductModel.findByIdAndUpdate({ _id: id }, data);
-    res.status(200).send(updatedProduct);
+    res.status(200).send("product updated");
   } catch (error) {
     console.log("Data not found", error);
   }
@@ -93,7 +93,7 @@ server.delete("/deleteproduct/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedProduct = await ProductModel.findByIdAndDelete({ _id: id });
-    res.status(200).send(deletedProduct);
+    res.status(200).send("product deleted");
   } catch (error) {
     console.log("Data not found", error);
   }
