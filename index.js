@@ -12,7 +12,7 @@ server.get("/", (req, res) => {
 
 // user model
 
-server.get("/products", async (req, res) => {
+server.get("/users", async (req, res) => {
   try {
     const filter = req.query;
     const user = await UserModel.find(filter);
@@ -30,7 +30,7 @@ server.post("/users", async (req, res) => {
     password,
   });
   await user.save();
-  res.send(`data recieved ${name} ${email} ${password}`);
+  res.send(user);
 });
 
 server.patch("/updateuser/:id", async (req, res) => {
