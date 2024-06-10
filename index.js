@@ -9,7 +9,6 @@ server.get("/", (req, res) => {
   res.send("helloworld");
 });
 
-
 // user model
 
 server.get("/users", async (req, res) => {
@@ -24,6 +23,12 @@ server.get("/users", async (req, res) => {
 
 server.post("/users", async (req, res) => {
   const { name, email, password } = req.body;
+
+  const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+    
   const user = new UserModel({
     name,
     email,
@@ -55,7 +60,6 @@ server.delete("/deleteuser/:id", async (req, res) => {
 });
 
 // product model
-
 
 server.get("/products", async (req, res) => {
   try {
